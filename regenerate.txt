@@ -1,5 +1,6 @@
 Method 1: Using cURL (Command Line)
-- Basic backfill (skips enquiries that already have sessions):
+- Basic backfill (skips enquiries that already have sessions and the enquires that have been added throgh psql query 
+and have either confirmed or deliverd gets converted into sessions accordingly ):
 bash
 curl -X POST http://localhost:5000/api/schedule/backfill \
   -H "Content-Type: application/json"

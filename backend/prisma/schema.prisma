@@ -1,55 +1,55 @@
-generator client {
-  provider = "prisma-client-js"
-}
+  generator client {
+    provider = "prisma-client-js"
+  }
 
-datasource db {
-  provider = "postgresql"
-  url      = env("DATABASE_URL")
-}
+  datasource db {
+    provider = "postgresql"
+    url      = env("DATABASE_URL")
+  }
 
-model Enquiry {
-  topicName         String
-  technology        String?
-  spoc              String
-  partnerName       String?
-  vendorName        String?
-  customerName      String?
-  solutionType      String?
-  perHourRate       Int?
-  hoursDelivery     Int?
-  enquiryDate       DateTime?
-  startDate         DateTime?
-  endDate           DateTime?
-  location          String?
-  status            String?     // Open, Lost, Confirmed, Delivered 
-  remarks           String?
-  learning          String?
-  createdAt         DateTime           @default(now())
-  updatedAt         DateTime           @updatedAt
-  enquiryId         String             @id @map("enquiryId")
-  customDays        String?
-  daysType          String?
-  sessionEndTime    String?
-  sessionStartTime  String?
-  scheduledSessions ScheduledSession[]
+  model Enquiry {
+    topicName         String
+    technology        String?
+    spoc              String
+    partnerName       String?
+    vendorName        String?
+    customerName      String?
+    solutionType      String?
+    perHourRate       Int?
+    hoursDelivery     Int?
+    enquiryDate       DateTime?
+    startDate         DateTime?
+    endDate           DateTime?
+    location          String?
+    status            String?     // Open, Lost, Confirmed, Delivered 
+    remarks           String?
+    learning          String?
+    createdAt         DateTime           @default(now())
+    updatedAt         DateTime           @updatedAt
+    enquiryId         String             @id @map("enquiryId")
+    customDays        String?
+    daysType          String?
+    sessionEndTime    String?
+    sessionStartTime  String?
+    scheduledSessions ScheduledSession[]
 
-  @@index([status])
-  @@index([enquiryDate])
-}
+    @@index([status])
+    @@index([enquiryDate])
+  }
 
-model ScheduledSession {
-  id               Int      @id @default(autoincrement())
-  enquiryId        String
-  sessionDate      DateTime
-  sessionStartTime String
-  sessionEndTime   String
-  isCompleted      Boolean  @default(false)
-  notes            String?
-  createdAt        DateTime @default(now())
-  updatedAt        DateTime @updatedAt
-  enquiry          Enquiry  @relation(fields: [enquiryId], references: [enquiryId], onDelete: Cascade)
+  model ScheduledSession {
+    id               Int      @id @default(autoincrement())
+    enquiryId        String
+    sessionDate      DateTime
+    sessionStartTime String
+    sessionEndTime   String
+    isCompleted      Boolean  @default(false)
+    notes            String?
+    createdAt        DateTime @default(now())
+    updatedAt        DateTime @updatedAt
+    enquiry          Enquiry  @relation(fields: [enquiryId], references: [enquiryId], onDelete: Cascade)
 
-  @@unique([enquiryId, sessionDate, sessionStartTime])
-  @@index([sessionDate])
-  @@index([enquiryId])
-}
+    @@unique([enquiryId, sessionDate, sessionStartTime])
+    @@index([sessionDate])
+    @@index([enquiryId])
+  }

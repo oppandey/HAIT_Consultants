@@ -10,9 +10,19 @@ npx prisma generate
 
 
 SQL Commands :
-TRUNCATE TABLE "table_name";
+
+# Connect to the Table 
+\c hait_consultants
+
+TRUNCATE TABLE "table_name"; # ScheduledSession or Enquiry
 \dt  
 select * from "Enquiry";
+
+-- Clear existing data from all tables (keeping structure intact)
+TRUNCATE TABLE "Enquiry" CASCADE;
+
+TRUNCATE TABLE "ScheduledSession" CASCADE;
+
 
 DELETE FROM "Enquiry"
 WHERE "enquiryId" = 'HAIT_14';
