@@ -9,3 +9,8 @@ bash
 curl -X POST http://localhost:5000/api/schedule/backfill \
   -H "Content-Type: application/json" \
   -d '{"force": true}'
+
+
+# I've made these two APIs so that if you can add a compeletely new records using psql query 
+then run these commands so that the schedules are formed by looking at their status.
+

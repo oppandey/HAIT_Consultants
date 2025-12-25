@@ -21,7 +21,7 @@ model Enquiry {
   startDate         DateTime?
   endDate           DateTime?
   location          String?
-  status            String?
+  status            String?     // Open, Lost, Confirmed, Delivered 
   remarks           String?
   learning          String?
   createdAt         DateTime           @default(now())

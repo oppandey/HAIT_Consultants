@@ -172,6 +172,7 @@ router.get('/', async (req, res) => {
 });
 
 // POST - Backfill existing enquiries
+// This is used to generate schedules for existing enquiries in Confirmed/Delivered status
 router.post('/backfill', async (req, res) => {
     try {
         console.log('🔄 Starting schedule backfill for existing enquiries...');
