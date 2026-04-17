@@ -1,0 +1,9 @@
+{
+	"name": "amritadfdevops",
+	"location": "eastus",
+	"identity": {
+		"type": "SystemAssigned",
+		"principalId": "06d9b1f4-6eb5-4c47-863b-11311d7a43e0",
+		"tenantId": "b39cef59-7810-40cb-96ce-66cdebe165a4"
+	}
+}
